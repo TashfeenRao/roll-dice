@@ -9,5 +9,8 @@ GAME RULES:
 
 */
 
-import './style.css'
-console.log("testtststs")
+import './style.css';
+import dom from './dom';
+
+
+dom.displayScore();
