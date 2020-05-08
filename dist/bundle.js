@@ -126,9 +126,10 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
   !*** ./src/dom.js ***!
   \********************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("throw new Error(\"Module parse failed: Unexpected token (17:30)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n|   };\\n| \\n>   updateRoundScore(diceRound) {\\n|       \\n|   }\");\n\n//# sourceURL=webpack:///./src/dom.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _initializer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./initializer */ \"./src/initializer.js\");\n\r\n\r\nconst dom = (() => {\r\n  const init = new _initializer__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\r\n\r\n  const updateActive = () => {\r\n    document.querySelector('.player-0-panel').classList.toggle('active');\r\n    document.querySelector('.player-1-panel').classList.toggle('active');\r\n  }\r\n  const updateRoundScore = (diceRound) => {\r\n    if (diceRound !== 1) {\r\n      init.roundScore += diceRound;\r\n      document.querySelector(`#current-${init.activePlayer}`).textContent = init.roundScore;\r\n    } else {\r\n      init.roundScore = 0;\r\n      document.querySelector(`#current-${init.activePlayer}`).textContent = init.roundScore;\r\n      init.activePlayer = init.activePlayer === 0 ? 1 : 0;\r\n      updateActive();\r\n      document.querySelector('.dice').style.display = 'none';\r\n    }\r\n  };\r\n  const displayDice = () => {\r\n    const diceRound = Math.floor(Math.random() * 6) + 1;\r\n    const domDice = document.querySelector('.dice');\r\n    domDice.style.display = 'block';\r\n    domDice.src = `dice-${diceRound}.png`;\r\n    updateRoundScore(diceRound);\r\n  };\r\n  const displayScore = () => {\r\n    document.querySelector('.dice').style.display = 'none';\r\n    document.querySelector('.btn-roll').addEventListener('click', displayDice);\r\n  };\r\n\r\n  return { displayScore };\r\n})();\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (dom);\n\n//# sourceURL=webpack:///./src/dom.js?");
 
 /***/ }),
 
@@ -141,6 +142,18 @@ eval("throw new Error(\"Module parse failed: Unexpected token (17:30)\\nYou may 
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dom */ \"./src/dom.js\");\n/*\nGAME RULES:\n\n- The game has 2 players, playing in rounds\n- In each turn, a player rolls a dice as many times as he whishes. Each result get added to his ROUND score\n- BUT, if the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn\n- The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn\n- The first player to reach 100 points on GLOBAL score wins the game\n\n*/\n\n\n\n\n\n_dom__WEBPACK_IMPORTED_MODULE_1__[\"default\"].displayScore();\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/initializer.js":
+/*!****************************!*\
+  !*** ./src/initializer.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nclass Initialize {\r\n  constructor() {\r\n    this.activePlayer = 0;\r\n    this.roundScore = 0;\r\n    this.scores = [0, 0];\r\n  }\r\n\r\n}\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (Initialize);\n\n//# sourceURL=webpack:///./src/initializer.js?");
 
 /***/ }),
 

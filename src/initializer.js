@@ -5,9 +5,6 @@ class Initialize {
     this.scores = [0, 0];
   }
 
-  giveDice() {
-    return this.
-  }
 }
 
 export default Initialize;
