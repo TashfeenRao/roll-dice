@@ -2,12 +2,6 @@ import Initilizer from './initializer';
 
 const dom = (() => {
   const init = new Initilizer();
-  const checkWin = () => {
-    if (init.scores[init.activePlayer] > 50) {
-      document.getElementById(`name-${init.activePlayer}`).textContent = 'Winner!';
-      document.querySelector('.dice').style.display = 'none';
-    }
-  }
   const updateActive = () => {
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
@@ -17,6 +11,16 @@ const dom = (() => {
     document.querySelector(`#current-${init.activePlayer}`).textContent = init.roundScore;
     init.activePlayer = init.activePlayer === 0 ? 1 : 0;
     updateActive();
+  };
+  const checkWin = () => {
+    if (init.scores[init.activePlayer] > 10) {
+      document.getElementById(`name-${init.activePlayer}`).textContent = 'Winner!';
+      document.querySelector('.dice').style.display = 'none';
+      document.querySelector(`.player-${init.activePlayer}-panel`).classList.add('winner');
+      document.querySelector(`.player-${init.activePlayer}-panel`).classList.remove('active');
+    } else {
+      switchPlayer();
+    }
   };
   const updateRoundScore = (diceRound) => {
     if (diceRound !== 1) {
@@ -37,8 +41,7 @@ const dom = (() => {
     init.scores[init.activePlayer] += init.roundScore;
     document.getElementById(`score-${init.activePlayer}`).textContent = init.scores[init.activePlayer];
     checkWin();
-    switchPlayer();
-  }
+  };
   const displayScore = () => {
     document.querySelector('.dice').style.display = 'none';
     document.querySelector('.btn-roll').addEventListener('click', displayDice);
