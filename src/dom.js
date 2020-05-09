@@ -63,6 +63,7 @@ const dom = (() => {
     init.scores[init.activePlayer] += init.roundScore;
     document.getElementById(`score-${init.activePlayer}`).textContent = init.scores[init.activePlayer];
     checkWin();
+    document.querySelector('.dice').style.display = 'none';
   };
   const listenToEvents = () => {
     document.querySelector('.dice').style.display = 'none';
