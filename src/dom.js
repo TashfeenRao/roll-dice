@@ -33,7 +33,7 @@ const dom = (() => {
     updateActive();
   };
   const checkWin = () => {
-    if (init.scores[init.activePlayer] > 10) {
+    if (init.scores[init.activePlayer] > 100) {
       document.getElementById(`name-${init.activePlayer}`).textContent = 'Winner!';
       document.querySelector('.dice').style.display = 'none';
       document.querySelector('.btn-roll').style.display = 'none';
